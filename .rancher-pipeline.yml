@@ -1,0 +1,22 @@
+name: maven-example
+stages:
+- name: Clone
+  steps:
+  - sourceCodeConfig: {}
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: maven:3-jdk-7
+      isShell: true
+      shellScript: |-
+        mvn clean install
+- name: Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: example-greenhouse:${CICD_EXECUTION_SEQUENCE}
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
