@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: greenhouse
+  name: example-greenhouse
   labels:
     app: greenhouse
 spec:
