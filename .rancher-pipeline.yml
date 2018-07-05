@@ -1,13 +1,8 @@
-name: maven-example
 stages:
-- name: Clone
-  steps:
-  - sourceCodeConfig: {}
 - name: Build
   steps:
   - runScriptConfig:
       image: maven:3-jdk-7
-      isShell: true
       shellScript: |-
         mvn clean install
 - name: Publish
