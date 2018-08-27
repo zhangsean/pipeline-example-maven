@@ -27,6 +27,8 @@ spec:
       labels:
         app: greenhouse
     spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
       containers:
       - name: maven
         image: ${CICD_LOCAL_REGISTRY}/example-greenhouse:${CICD_EXECUTION_SEQUENCE}
